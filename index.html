@@ -1,0 +1,216 @@
+<!doctype html>
+<html lang="en">  
+
+<head>
+
+      
+  <meta charset="utf-8">     
+  <meta name="viewport"  content="width=device-width, initial-scale=1">
+  <title>Temperature Converter</title>
+
+
+
+
+    
+</head>
+
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Lobster&display=swap');
+
+  body {
+    background: linear-gradient(to right, darkblue 0%, yellow 100%);
+    color: white;
+  }
+
+  .tableclass {
+    border: solid white 5px;
+
+  }
+
+  img {
+    width: 350px;
+    height: auto;
+    border-radius: 15%;
+  }
+
+  #horizontalLine {
+    border: white 1px;
+  }
+
+  a:link,
+  a:visited {
+    font-weight: bold;
+    text-decoration: none;
+    color: white;
+  }
+
+  h1 {
+    font-family: 'Lobster', cursive;
+    color: white;
+  }
+</style>
+
+
+
+
+
+<body>
+
+  <table class="tableclass">
+    <tr>
+      <td>
+        <h1>Temperature Converter</h1>
+
+
+        <P><strong>Calculate farenheit to celcius: ex. (68&#176;F - 32) &#215; 5/9 = 20&#176;C </strong><br>
+          <strong>Calculate celcius to farenheit: ex. (20&#176;C * 1.8) + 32 = 68&#176;F </strong>
+        </P>
+
+
+        <form name=theform>
+          <table>
+            <tr>
+              <td rowspan="9"><img src="winter.jpg" alt="picture of winter season"></td>
+              <td style="float: right;"><strong>Enter temperature value in farenheit: </strong></td>
+              <td><input name="farenheit1FmInput" size="10"></td>
+            </tr>
+
+            <tr>
+              <td style="float: right;"><strong>Celcius: </strong></td>
+              <td style="background-color: white; color: black" id="celcius1FmOutput"></td>
+            </tr>
+
+            <tr>
+              <td colspan="2"><input type="button" name="calc" value="Calculate" onclick="calculateCelcius();">
+                <input type="button" name="clear" value="Clear" onclick="clearinfoCelcius();">
+              </td>
+
+            <tr>
+              <td colspan="10">
+                <p>
+                  <hr>
+                </p>
+              </td>
+            </tr>
+
+            <tr>
+              <td style="float: right;"><strong>Enter tempaerature value in celcius: </strong></td>
+              <td><input name="celcius2FmInput" size="10"></td>
+            </tr>
+
+            <tr>
+              <td style="float: right"><strong>Farenheit: </strong></td>
+              <td style="background-color: white; color: black" id="farenheit2FmOutput"></td>
+            </tr>
+
+            <tr>
+              <td colspan="2"><input type="button" name="calc" value="Calculate" onclick="calculateFarenheit();">
+                <input type="button" name="clear" value="Clear" onclick="clearinfoFarenheit();">
+              </td>
+            </tr>
+          </table>
+        </form>
+
+
+      </td>
+    </tr>
+  </table>
+
+  <script>
+    document.theform.farenheit1FmInput.focus();
+
+    //C° = (F° − 32) × 5⁄9
+    function calculateCelcius() {
+      const converstionFactor = 0.555;
+      const minusDegrees = 32;
+
+      var farenheit;
+      var celcius;
+
+
+      //get values from the text fields
+      farenheit = parseFloat(document.theform.farenheit1FmInput.value);
+
+
+
+
+      //calculate 
+      celcius = parseFloat((farenheit - minusDegrees) * converstionFactor);
+
+
+
+
+
+      //diplay the Celius temp
+      document.getElementById("celcius1FmOutput").innerHTML = celcius.toFixed(1);
+
+
+    }
+
+
+    //°F = (°C × 9/5) + 32
+    function calculateFarenheit() {
+      const converstionFactor = 1.8;
+      const plusDegrees = 32;
+
+      var farenheit;
+      var celcius;
+
+
+      //get values from the text fields
+      celcius = parseFloat(document.theform.celcius2FmInput.value);
+
+
+
+
+      //calculate 
+      farenheit = parseFloat((celcius * converstionFactor) + plusDegrees);
+
+
+
+
+
+      //diplay the Farenheit temp
+      document.getElementById("farenheit2FmOutput").innerHTML = farenheit.toFixed(1);
+
+
+    }
+
+    function clearinfoCelcius() {
+      document.theform.farenheit1FmInput.value = " ";
+
+
+      document.getElementById("celcius1FmOutput").innerHTML = " ";
+
+
+      document.theform.farenheit1FmInput.focus();
+
+
+
+    }
+
+    function clearinfoFarenheit() {
+      document.theform.celcius2FmInput.value = " ";
+
+
+      document.getElementById("farenheit2FmOutput").innerHTML = " ";
+
+      document.theform.celcius2FmInput.focus();
+
+
+
+    }
+
+
+
+  </script>
+
+  <p></p>
+  <a href="http://csnet.southtexascollege.edu/localuser/oguerrer/">Go Back to HOMEPAGE</a><br>
+  <strong>Oscar Guerrero</strong>
+
+
+
+</body>
+
+</html>
